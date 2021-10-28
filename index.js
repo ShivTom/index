@@ -30,7 +30,7 @@ let yVelocity = 0;
 let score = 0;
 
 const gulpSound = new Audio("gulp.mp3");
-
+const gameoverSound = new Audio("zapsplat_multimedia_male_voice_processed_says_game_over_004_23671.mp3")
 //game loop
 function drawGame() {
   xVelocity = inputsXVelocity;
@@ -38,7 +38,7 @@ function drawGame() {
 
   changeSnakePosition();
   let result = isGameOver();
-  if (result) {
+  if (result) {gameoverSound.play();
     return;
   }
 
@@ -87,10 +87,6 @@ function isGameOver() {
   }
 
   if (gameOver) {
-    ctx.fillStyle = "white";
-    ctx.font = "50px Verdana";
-
-    if (gameOver) {
       ctx.fillStyle = "white";
       ctx.font = "50px Verdana";
 
@@ -103,9 +99,6 @@ function isGameOver() {
 
       ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);
     }
-
-    ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);
-  }
 
   return gameOver;
 }
